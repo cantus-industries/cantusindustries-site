@@ -81,3 +81,27 @@ document.addEventListener('DOMContentLoaded', () => {
   btn.addEventListener('click', ask);
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
 });
+
+// Network figure: hovering or focusing a bubble isolates its touchpoints.
+document.addEventListener('DOMContentLoaded', () => {
+  const svg = document.getElementById('netSvg');
+  if (!svg) return;
+  const edges = Array.from(svg.querySelectorAll('.net-edge'));
+  svg.querySelectorAll('.net-node').forEach((node) => {
+    const id = node.getAttribute('data-id');
+    const on = () => {
+      svg.classList.add('focused');
+      edges.forEach((e) => {
+        e.classList.toggle('lit', e.getAttribute('data-n').split(' ').includes(id));
+      });
+    };
+    const off = () => {
+      svg.classList.remove('focused');
+      edges.forEach((e) => e.classList.remove('lit'));
+    };
+    node.addEventListener('mouseenter', on);
+    node.addEventListener('mouseleave', off);
+    node.addEventListener('focus', on);
+    node.addEventListener('blur', off);
+  });
+});
