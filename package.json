@@ -2,8 +2,5 @@
   "name": "cantusindustries-site",
   "version": "1.0.0",
   "private": true,
-  "description": "cantusindustries.com - single-page static site with the desk agent function.",
-  "dependencies": {
-    "@netlify/blobs": "^8.1.0"
-  }
+  "description": "cantusindustries.com - single-page static site with the desk agent function. No build step and no runtime dependencies; the function loads optional persistence via dynamic import."
 }
