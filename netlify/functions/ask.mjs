@@ -36,8 +36,21 @@ Rules, absolute and in priority order:
 7. Always write the firm's name as "Cantus Industries", never bare "Cantus".`;
 
 function loadCorpus() {
+  // Bundlers relocate the function file, so try every plausible location for
+  // the included corpus before giving up.
   const here = dirname(fileURLToPath(import.meta.url));
-  return readFileSync(join(here, "corpus.md"), "utf-8");
+  const candidates = [
+    join(here, "corpus.md"),
+    join(here, "netlify", "functions", "corpus.md"),
+    join(process.cwd(), "netlify", "functions", "corpus.md"),
+    join(process.cwd(), "corpus.md"),
+  ];
+  for (const path of candidates) {
+    try {
+      return readFileSync(path, "utf-8");
+    } catch { /* try the next location */ }
+  }
+  throw new Error("corpus.md not found in any known location");
 }
 
 async function sha256(text) {
