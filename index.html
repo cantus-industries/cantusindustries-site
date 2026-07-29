@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -45,6 +45,7 @@
       </div>
       <nav class="site-nav" aria-label="Main Navigation">
         <ul class="nav-links">
+          <li><a href="#use-cases">Use cases</a></li>
           <li><a href="#proof">Proof</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#method">Method</a></li>
@@ -69,21 +70,57 @@
         <p class="hero-subhead">
           Cantus Industries designs agentic architectures where the generator and the verifier are never the same agent, standards are measurable instead of aspirational, and an incomplete review can never return an approval.
         </p>
+        <p class="hero-breadth">
+          Custom bots, autonomous agents, and end-to-end agentic workflows — built to order.
+        </p>
         <p class="hero-proof-line">
           Every claim on this page is verifiable: our frameworks are public, tested, and documented — clone them and run the suites yourself.
         </p>
+        <div class="hero-stats" aria-label="Verifiable numbers">
+          <div class="stat"><span class="stat-num">315</span><span class="stat-label">passing tests</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">public repositories</span></div>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">LLM platforms</span></div>
+          <div class="stat"><span class="stat-num">0</span><span class="stat-label">unverifiable claims</span></div>
+        </div>
         <div class="hero-ctas">
           <!-- TODO: Update mailto: request once owner supplies the Cal.com/Calendly booking URL -->
           <a href="mailto:cantusteam@cantusindustries.com?subject=Intro%20Call%20Request" class="btn btn-primary">Book an intro call &rarr;</a>
           <a href="#proof" class="link-secondary">See the code &rarr;</a>
+          <a href="#desk" class="link-secondary desk-pointer">Or ask our own agent about us &darr;</a>
         </div>
       </div>
     </section>
 
-    <!-- 2. Proof -->
+    <!-- 2. Use cases -->
+    <section class="section usecases-section" id="use-cases">
+      <div class="section-container">
+        <span class="section-label">01 / WHAT YOU CAN USE US FOR</span>
+        <h2 class="section-title">Your workflow, with a verifier in the loop</h2>
+        <div class="usecase-grid">
+          <div class="usecase-card">
+            <h3>Document review that blocks instead of rubber-stamps</h3>
+            <p>Contracts, policies, releases, content — reviewed in parallel by specialist agents, with a verdict your team can gate real decisions on.</p>
+          </div>
+          <div class="usecase-card">
+            <h3>Scheduled pipelines that refuse partial data</h3>
+            <p>Reporting and data-to-production automation that validates at every boundary and never publishes on an incomplete picture.</p>
+          </div>
+          <div class="usecase-card">
+            <h3>Repetitive decisions with an audit trail</h3>
+            <p>The judgment calls your team makes fifty times a week, executed by agents — every outcome traceable to evidence and a named standard.</p>
+          </div>
+          <div class="usecase-card">
+            <h3>Custom bots grounded in your own materials</h3>
+            <p>Assistants that answer only from sources you control and decline everything else. <a href="#desk">You can talk to one at the bottom of this page &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Proof -->
     <section class="section proof-section" id="proof">
       <div class="section-container">
-        <span class="section-label">01 / PROOF</span>
+        <span class="section-label">02 / PROOF</span>
         <h2 class="section-title">The code is public</h2>
         <p class="section-intro">
           Most consultancies show you slide decks. We show you repositories — three hundred fifteen tests between them, every limitation documented in the README. And these are the examples, not the extent: Cantus Industries builds custom bots, autonomous agents, and end-to-end agentic workflows to order.
@@ -93,7 +130,7 @@
           <!-- Card 1 -->
           <article class="repo-card">
             <header class="repo-card-header">
-              <span class="repo-meta">Example Use Case / Repository</span>
+              <span class="repo-meta">Example: document review automation</span>
               <h3 class="repo-name">multi-agent-review-council</h3>
               <div class="test-badge">156 tests</div>
             </header>
@@ -112,7 +149,7 @@
           <!-- Card 2 -->
           <article class="repo-card">
             <header class="repo-card-header">
-              <span class="repo-meta">Example Use Case / Repository</span>
+              <span class="repo-meta">Example: scheduled data pipelines</span>
               <h3 class="repo-name">scheduled-deployment-pipeline</h3>
               <div class="test-badge">159 tests</div>
             </header>
@@ -131,7 +168,7 @@
           <!-- Card 3 -->
           <article class="repo-card">
             <header class="repo-card-header">
-              <span class="repo-meta">Case Study / Repository</span>
+              <span class="repo-meta">Case study: a full four-layer architecture</span>
               <h3 class="repo-name">agentic-writers-room</h3>
             </header>
             <div class="repo-body">
@@ -152,7 +189,7 @@
     <!-- 3. Services -->
     <section class="section services-section" id="services">
       <div class="section-container">
-        <span class="section-label">02 / SERVICES</span>
+        <span class="section-label">03 / SERVICES</span>
         <h2 class="section-title">Three ways to engage</h2>
         <p class="section-intro">
           Every engagement is fixed-scope and milestone-gated. We do not bill hourly.
@@ -217,11 +254,45 @@
     <!-- 4. Method -->
     <section class="section method-section" id="method">
       <div class="section-container">
-        <span class="section-label">03 / METHOD</span>
+        <span class="section-label">04 / METHOD</span>
         <h2 class="section-title">How we build</h2>
         <p class="section-intro">
           Five principles, all visible in the public code.
         </p>
+
+        <figure class="method-diagram" role="img" aria-label="Diagram: a generator agent drafts, a separate verifier agent reviews against measurable standards, and a human gate approves. An incomplete review is blocked, and accepted corrections update the standards.">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" class="diagram-svg">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" class="dg-arrowhead"/>
+              </marker>
+            </defs>
+            <rect x="20" y="90" width="170" height="64" class="dg-box"/>
+            <text x="105" y="117" class="dg-title" text-anchor="middle">GENERATOR</text>
+            <text x="105" y="137" class="dg-sub" text-anchor="middle">drafts the work</text>
+            <rect x="295" y="90" width="170" height="64" class="dg-box dg-box-verifier"/>
+            <text x="380" y="117" class="dg-title" text-anchor="middle">VERIFIER</text>
+            <text x="380" y="137" class="dg-sub" text-anchor="middle">separate agent + platform</text>
+            <rect x="570" y="90" width="170" height="64" class="dg-box"/>
+            <text x="655" y="117" class="dg-title" text-anchor="middle">HUMAN GATE</text>
+            <text x="655" y="137" class="dg-sub" text-anchor="middle">a named person owns it</text>
+            <rect x="295" y="216" width="170" height="56" class="dg-box dg-box-standards"/>
+            <text x="380" y="240" class="dg-title" text-anchor="middle">STANDARDS</text>
+            <text x="380" y="258" class="dg-sub" text-anchor="middle">numeric, versioned, on disk</text>
+            <rect x="308" y="16" width="144" height="40" class="dg-box dg-box-blocked"/>
+            <text x="380" y="41" class="dg-title dg-blocked-text" text-anchor="middle">BLOCKED</text>
+            <line x1="190" y1="122" x2="288" y2="122" class="dg-line" marker-end="url(#arr)"/>
+            <line x1="465" y1="122" x2="563" y2="122" class="dg-line" marker-end="url(#arr)"/>
+            <line x1="380" y1="90" x2="380" y2="62" class="dg-line dg-line-blocked" marker-end="url(#arr)"/>
+            <line x1="380" y1="216" x2="380" y2="160" class="dg-line" marker-end="url(#arr)"/>
+            <path d="M 655 154 L 655 244 L 471 244" class="dg-line dg-line-return" fill="none" marker-end="url(#arr)"/>
+            <text x="239" y="112" class="dg-edge" text-anchor="middle">draft</text>
+            <text x="514" y="112" class="dg-edge" text-anchor="middle">verdict</text>
+            <text x="380" y="196" class="dg-edge" text-anchor="middle">checked against</text>
+            <text x="560" y="236" class="dg-edge" text-anchor="middle">corrections write back</text>
+          </svg>
+          <figcaption class="diagram-caption">The loop closes at the human, and the write-back is the point: an accepted correction updates the standard, so the same mistake cannot ship twice.</figcaption>
+        </figure>
 
         <ol class="principles-list">
           <li class="principle-item">
@@ -266,7 +337,7 @@
     <!-- 5. About -->
     <section class="section about-section" id="about">
       <div class="section-container">
-        <span class="section-label">04 / ABOUT</span>
+        <span class="section-label">05 / ABOUT</span>
         <h2 class="section-title">Nicholas Chapman, founder.</h2>
         <div class="about-content">
           <p>
@@ -282,7 +353,7 @@
     <!-- 6. Contact -->
     <section class="section contact-section" id="contact">
       <div class="section-container">
-        <span class="section-label">05 / CONTACT</span>
+        <span class="section-label">06 / CONTACT</span>
         <h2 class="section-title">Start with the code, then talk to us.</h2>
         
         <div class="contact-details">

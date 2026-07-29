@@ -796,3 +796,145 @@ a:hover {
   .desk-row { flex-direction: column; }
   #askBtn { width: 100%; }
 }
+
+/* 10. Hero additions: breadth line, stat row, desk pointer */
+.hero-breadth {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-green);
+  margin-bottom: 1.25rem;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--border-color);
+  margin: 2rem 0;
+  max-width: 640px;
+}
+.stat {
+  flex: 1 1 25%;
+  min-width: 140px;
+  padding: 0.9rem 1rem;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  line-height: 1.1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.desk-pointer { color: var(--text-muted); }
+
+/* 11. Use-case section */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.25rem;
+}
+.usecase-card {
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--accent-green);
+  background-color: var(--card-bg);
+  padding: 1.4rem 1.5rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.usecase-card:hover {
+  transform: translateY(-2px);
+  border-top-color: var(--accent-red);
+}
+.usecase-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+.usecase-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* 12. Method diagram */
+.method-diagram {
+  margin: 0 0 3rem 0;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  padding: 1.5rem 1.5rem 1rem;
+  overflow-x: auto;
+}
+.diagram-svg {
+  width: 100%;
+  height: auto;
+  min-width: 560px;
+  display: block;
+}
+.dg-box {
+  fill: var(--bg-color);
+  stroke: var(--border-color);
+  stroke-width: 1.5;
+}
+.dg-box-verifier { stroke: var(--accent-green); }
+.dg-box-standards { stroke-dasharray: 4 3; }
+.dg-box-blocked {
+  fill: transparent;
+  stroke: var(--accent-red);
+  stroke-width: 2;
+}
+.dg-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  fill: var(--text-color);
+  letter-spacing: 0.05em;
+}
+.dg-blocked-text { fill: var(--accent-red); }
+.dg-sub {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--text-muted);
+}
+.dg-edge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--text-muted);
+}
+.dg-line {
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+}
+.dg-line-blocked { stroke: var(--accent-red); }
+.dg-line-return { stroke-dasharray: 4 3; }
+.dg-arrowhead { fill: var(--text-muted); }
+.dg-line-blocked + .dg-arrowhead { fill: var(--accent-red); }
+.diagram-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.9rem;
+  max-width: 640px;
+}
+
+/* 13. Card hover polish */
+.repo-card, .service-item {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.repo-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-red);
+}
+@media (prefers-reduced-motion: reduce) {
+  .usecase-card:hover, .repo-card:hover { transform: none; }
+}

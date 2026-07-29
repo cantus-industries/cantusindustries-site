@@ -9,6 +9,8 @@ Services (fixed-scope, milestone-gated, never hourly):
 
 Method - five principles: durable state beats clever prompting; the generator never verifies its own work; standards must be measurable to be enforceable; fail loud (a system that cannot complete its checks blocks, never returns a confident default); the human gate is a feature.
 
+What you can use Cantus Industries for (example use cases): document review that blocks instead of rubber-stamps (contracts, policies, releases, content); scheduled pipelines that refuse to publish on partial data; repetitive decisions executed by agents with an audit trail traceable to evidence and a named standard; custom bots grounded only in materials the client controls, which decline everything else (the desk agent on this site is one). These are examples, not the extent - Cantus Industries builds custom bots, autonomous agents, and end-to-end agentic workflows to order.
+
 About the founder: Nicholas Chapman came to agentic AI through an organizational mandate to raise AI fluency at scale, where the measure of success was tempo. The portfolio is built on commercially available frontier models on personal projects. The code is public and tested.
 
 # SECTION: multi-agent-review-council README
