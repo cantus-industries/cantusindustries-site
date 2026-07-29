@@ -26,8 +26,9 @@ netlify/functions/corpus.md     the agent's only source of truth
 
 ## Before going live — owner checklist
 
-- [ ] Confirm the diagnostic price ($3,500 is the spec placeholder) — it
-      appears in `index.html`, `corpus.md`, and the meta description.
+- [x] Diagnostic price confirmed by owner: **$2,500–$5,000 range**, exact
+      figure fixed by workflow scope before the engagement starts. Appears in
+      `index.html`, `corpus.md`, `ask.mjs`, and the meta description.
 - [ ] Add the Cal.com/Calendly URL: replace the two `mailto:` CTA hrefs in
       `index.html` if you want call-booking instead of email-first.
 - [ ] **Agent launch gate (spec §6.5):** the agent must pass a red-team pass

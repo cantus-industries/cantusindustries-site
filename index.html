@@ -1,337 +1,342 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cantus Industries — Multi-Agent Systems That Audit Their Own Work</title>
-<meta name="description" content="Fixed-scope agentic AI engineering: consensus review councils, gated autonomous pipelines, and a $3,500 readiness diagnostic. Public code, 315 tests, verifiable claims.">
-<meta property="og:title" content="Cantus Industries — Multi-Agent Systems That Audit Their Own Work">
-<meta property="og:description" content="Fixed-scope agentic AI engineering: consensus review councils, gated autonomous pipelines, and a $3,500 readiness diagnostic. Public code, 315 tests, verifiable claims.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://cantusindustries.com">
-<style>
-:root{
-  --paper:#f6f2ea; --ink:#1d1a16; --ink-soft:#4c463d; --line:#d8d0c2;
-  --panel:#efe9dd; --rubric:#a83c34; --verdigris:#3e7a68; --mono-bg:#ece5d6;
-}
-:root[data-theme="dark"]{
-  --paper:#14120f; --ink:#e9e2d4; --ink-soft:#a89f8d; --line:#332e26;
-  --panel:#1c1915; --rubric:#d4685f; --verdigris:#63a892; --mono-bg:#211d18;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#14120f; --ink:#e9e2d4; --ink-soft:#a89f8d; --line:#332e26;
-    --panel:#1c1915; --rubric:#d4685f; --verdigris:#63a892; --mono-bg:#211d18;
-  }
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{
-  background:var(--paper); color:var(--ink);
-  font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
-  font-size:17px; line-height:1.65;
-}
-.mono{font-family:'Cascadia Code',Consolas,'SF Mono',Menlo,monospace}
-code,.num{font-family:'Cascadia Code',Consolas,'SF Mono',Menlo,monospace;font-variant-numeric:tabular-nums}
-a{color:var(--rubric);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--verdigris)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--rubric);outline-offset:2px}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
-/* nav */
-nav{
-  position:sticky;top:0;z-index:10;background:var(--paper);
-  border-bottom:1px solid var(--line);
-}
-nav .wrap{display:flex;align-items:baseline;gap:18px;padding:14px 24px;flex-wrap:wrap}
-nav .brand{font-weight:700;font-size:15px;letter-spacing:.02em;margin-right:auto;color:var(--ink);text-decoration:none}
-nav a.item{font-family:'Cascadia Code',Consolas,monospace;font-size:12.5px;color:var(--ink-soft);text-decoration:none}
-nav a.item:hover{color:var(--rubric)}
-#themeToggle{
-  background:none;border:1px solid var(--line);color:var(--ink-soft);
-  font-family:'Cascadia Code',Consolas,monospace;font-size:11.5px;
-  padding:3px 10px;border-radius:3px;cursor:pointer;
-}
-#themeToggle:hover{border-color:var(--rubric);color:var(--rubric)}
-/* sections */
-section{padding:72px 0;border-bottom:1px solid var(--line)}
-.sec-label{
-  font-family:'Cascadia Code',Consolas,monospace;font-size:12px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);
-  margin-bottom:22px;
-}
-.sec-label::before{content:"— "}
-h1{font-size:clamp(30px,5.5vw,44px);line-height:1.16;font-weight:700;letter-spacing:-.01em;margin-bottom:20px}
-h2{font-size:24px;margin-bottom:8px}
-h3{font-size:18.5px;margin-bottom:6px}
-p{margin-bottom:14px;color:var(--ink)}
-.soft{color:var(--ink-soft)}
-/* hero */
-#hero{padding-top:84px}
-#hero .proofline{
-  border-left:3px solid var(--verdigris);padding:10px 16px;margin:26px 0;
-  background:var(--panel);font-size:16px;
-}
-.cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:26px}
-.btn{
-  display:inline-block;background:var(--rubric);color:var(--paper);
-  font-family:'Cascadia Code',Consolas,monospace;font-size:14px;
-  padding:11px 20px;border-radius:3px;text-decoration:none;border:none;cursor:pointer;
-}
-.btn:hover{background:var(--verdigris);color:var(--paper)}
-/* proof cards */
-.card{
-  border:1px solid var(--line);border-left:3px solid var(--rubric);
-  background:var(--panel);padding:20px 22px;margin-bottom:18px;
-}
-.card h3{font-family:'Cascadia Code',Consolas,monospace;font-size:15.5px}
-.card p{margin:8px 0 10px;font-size:15.5px}
-.card a{font-family:'Cascadia Code',Consolas,monospace;font-size:13px;overflow-wrap:anywhere}
-.card h3{overflow-wrap:anywhere}
-.contact-lines a{overflow-wrap:anywhere}
-.badge{
-  font-family:'Cascadia Code',Consolas,monospace;font-size:11.5px;
-  color:var(--verdigris);border:1px solid var(--verdigris);
-  padding:1px 8px;border-radius:10px;margin-left:8px;white-space:nowrap;
-  font-variant-numeric:tabular-nums;
-}
-/* services */
-.offer{margin-bottom:34px}
-.offer .price{color:var(--rubric);font-family:'Cascadia Code',Consolas,monospace;font-size:15px;font-variant-numeric:tabular-nums}
-.offer .scoped{font-family:'Cascadia Code',Consolas,monospace;font-size:12.5px;color:var(--ink-soft)}
-/* method */
-ol.method{margin-left:22px}
-ol.method li{margin-bottom:16px}
-ol.method li::marker{color:var(--rubric);font-family:'Cascadia Code',Consolas,monospace;font-weight:700}
-/* contact + agent */
-.contact-lines{font-family:'Cascadia Code',Consolas,monospace;font-size:14.5px;line-height:2.1;margin-bottom:36px}
-#desk{
-  border:1px solid var(--line);background:var(--panel);padding:22px;
-}
-#desk h3{font-family:'Cascadia Code',Consolas,monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--verdigris)}
-#desk .hint{font-size:14px;color:var(--ink-soft);margin:6px 0 14px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.chip{
-  font-family:'Cascadia Code',Consolas,monospace;font-size:12px;
-  background:var(--mono-bg);border:1px solid var(--line);color:var(--ink-soft);
-  padding:5px 10px;border-radius:3px;cursor:pointer;
-}
-.chip:hover{border-color:var(--rubric);color:var(--rubric)}
-.ask-row{display:flex;gap:10px}
-#askInput{
-  flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);color:var(--ink);
-  font-family:'Cascadia Code',Consolas,monospace;font-size:14px;padding:10px 12px;border-radius:3px;
-}
-#askBtn{
-  background:var(--rubric);border:none;color:var(--paper);
-  font-family:'Cascadia Code',Consolas,monospace;font-size:14px;
-  padding:10px 18px;border-radius:3px;cursor:pointer;
-}
-#askBtn:hover{background:var(--verdigris)}
-#askBtn:disabled{opacity:.5;cursor:wait}
-#answer{margin-top:16px;display:none}
-#answer .a-text{font-size:15.5px;white-space:pre-wrap}
-#answer .a-src{
-  font-family:'Cascadia Code',Consolas,monospace;font-size:11.5px;
-  color:var(--ink-soft);margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;
-}
-/* footer */
-footer{padding:36px 0 48px;font-size:14px;color:var(--ink-soft)}
-footer .mono{font-size:12px}
-@media (max-width:520px){
-  section{padding:52px 0}
-  .ask-row{flex-direction:column}
-  #askBtn{width:100%}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantus Industries | Multi-Agent Systems That Audit Their Own Work</title>
+  <meta name="description" content="Fixed-scope agentic AI engineering: consensus review councils, gated autonomous pipelines, and a fixed-price readiness diagnostic from $2,500. Public code, 315 tests, verifiable claims.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.cantusindustries.com/">
+  <meta property="og:title" content="Cantus Industries | Multi-Agent Systems That Audit Their Own Work">
+  <meta property="og:description" content="Fixed-scope agentic AI engineering: consensus review councils, gated autonomous pipelines, and a fixed-price readiness diagnostic from $2,500. Public code, 315 tests, verifiable claims.">
+  <meta property="og:image" content="/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.cantusindustries.com/">
+  <meta property="twitter:title" content="Cantus Industries | Multi-Agent Systems That Audit Their Own Work">
+  <meta property="twitter:description" content="Fixed-scope agentic AI engineering: consensus review councils, gated autonomous pipelines, and a fixed-price readiness diagnostic from $2,500. Public code, 315 tests, verifiable claims.">
+  <meta property="twitter:image" content="/og-image.png">
+
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Inline script to set the theme from localStorage before render to avoid flash of light/dark theme -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
 </head>
 <body>
 
-<nav aria-label="Site">
-  <div class="wrap">
-    <a class="brand" href="#hero">Cantus Industries</a>
-    <a class="item" href="#proof">Proof</a>
-    <a class="item" href="#services">Services</a>
-    <a class="item" href="#method">Method</a>
-    <a class="item" href="#about">About</a>
-    <a class="item" href="#contact">Contact</a>
-    <button id="themeToggle" aria-label="Toggle color theme">theme</button>
-  </div>
-</nav>
-
-<section id="hero">
-  <div class="wrap">
-    <h1>We build multi-agent systems that audit their own work.</h1>
-    <p>Cantus Industries designs agentic architectures where the generator and the verifier are never the same agent, standards are measurable instead of aspirational, and an incomplete review can never return an approval.</p>
-    <div class="proofline">
-      Every claim on this page is verifiable: our frameworks are public, tested, and documented — clone them and run the suites yourself.
-    </div>
-    <div class="cta-row">
-      <a class="btn" href="mailto:cantusteam@cantusindustries.com?subject=Intro%20call">Book an intro call</a>
-      <a href="#proof">See the code →</a>
-    </div>
-  </div>
-</section>
-
-<section id="proof">
-  <div class="wrap">
-    <div class="sec-label">01 · Proof — the code is public</div>
-    <p>Most consultancies show you slide decks. We show you repositories. Three hundred fifteen tests between them, every limitation documented in the README.</p>
-
-    <div class="card">
-      <h3>multi-agent-review-council <span class="badge num">156 tests</span></h3>
-      <p>Parallel document review by six specialist agents with a fail-loud consensus ledger. If a reviewer crashes, times out, or never reports, the run is blocked — never approved on partial evidence. Runs offline, on Claude, or on Gemini behind one protocol.</p>
-      <a href="https://github.com/cantus-industries/multi-agent-review-council">github.com/cantus-industries/multi-agent-review-council →</a>
-    </div>
-
-    <div class="card">
-      <h3>scheduled-deployment-pipeline <span class="badge num">159 tests</span></h3>
-      <p>A scheduled pipeline from parallel ingestion agents to a gated, reversible production deploy. Refuses to publish on partial data; every write is atomic, backed up, and verified after landing.</p>
-      <a href="https://github.com/cantus-industries/scheduled-deployment-pipeline">github.com/cantus-industries/scheduled-deployment-pipeline →</a>
-    </div>
-
-    <div class="card">
-      <h3>agentic-writers-room <span class="badge">case study</span></h3>
-      <p>A case study: one operator directing ten-plus agents across four layers and two LLM platforms, with persistent state and a human gate on every decision. The architecture the two frameworks above were extracted from.</p>
-      <a href="https://github.com/cantus-industries/agentic-writers-room">github.com/cantus-industries/agentic-writers-room →</a>
-    </div>
-  </div>
-</section>
-
-<section id="services">
-  <div class="wrap">
-    <div class="sec-label">02 · Services</div>
-    <p>Three ways to engage. Every engagement is fixed-scope and milestone-gated — we do not bill hourly.</p>
-
-    <div class="offer">
-      <h3>Agentic Readiness Diagnostic — <span class="price">$3,500, two weeks</span></h3>
-      <p>We take one workflow you believe could be automated — a review process, a reporting pipeline, a repetitive decision — and put it through the same analysis our own systems use. You receive a written findings report: where agents genuinely fit, where they don't, what the architecture would look like, and what it would cost to build. Findings come with severity ratings and evidence, the same format our review council produces. If the answer is "don't build this," the report says so.</p>
-      <a class="btn" href="mailto:cantusteam@cantusindustries.com?subject=Agentic%20Readiness%20Diagnostic">Book the diagnostic</a>
-    </div>
-
-    <div class="offer">
-      <h3>Consensus Review Deployment</h3>
-      <p>A multi-agent review panel adapted to your documents and your standards — contracts, policies, releases, content — with viewpoints you define, a fail-loud ledger, and verdicts your team can gate real decisions on. Built on our public council framework. <span class="scoped">Scoped after diagnostic.</span></p>
-    </div>
-
-    <div class="offer">
-      <h3>Autonomous Pipeline Deployment</h3>
-      <p>Scheduled, hands-off data-to-production automation with validation at every boundary, atomic deploys, backups, and rollback. Built on our public pipeline framework. Setup plus an optional maintenance retainer. <span class="scoped">Scoped after diagnostic.</span></p>
-    </div>
-  </div>
-</section>
-
-<section id="method">
-  <div class="wrap">
-    <div class="sec-label">03 · Method — how we build</div>
-    <p>Five principles, all visible in the public code.</p>
-    <ol class="method">
-      <li><strong>Durable state beats clever prompting.</strong> Hard problems get solved with versioned files on disk — ledgers, timelines, knowledge bases — not longer prompts. No agent depends on its memory of a prior session.</li>
-      <li><strong>The generator never verifies its own work.</strong> Producer and reviewer are separate agents, ideally on separate platforms with separate failure modes.</li>
-      <li><strong>Standards must be measurable to be enforceable.</strong> Numeric caps and countable rules, not adjectives. "Use sparingly" is not a standard; "no more than two per document, counted mechanically" is.</li>
-      <li><strong>Fail loud.</strong> A system that cannot complete its checks blocks; it never returns a confident default. Incomplete evidence is a verdict, and that verdict is no.</li>
-      <li><strong>The human gate is a feature.</strong> Throughput comes from the agents; judgment does not. A named person owns every decision that ships.</li>
-    </ol>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap">
-    <div class="sec-label">04 · About</div>
-    <h2>Nicholas Chapman, founder</h2>
-    <p>I came to agentic AI through an organizational mandate to raise AI fluency at scale, where the measure of success was tempo — how much faster a team can move without lowering its standard for verification. That environment made two things obvious early: speed without a check is a liability, and a check that slows everything down defeats the purpose. Everything Cantus Industries builds is aimed at having both.</p>
-    <p>The portfolio is built on commercially available frontier models, on my own time, on personal projects. The code is public and tested. Read it before you call me.</p>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-label">05 · Contact</div>
-    <h2>Start with the code, then talk to us.</h2>
-    <div class="contact-lines">
-      email — <a href="mailto:cantusteam@cantusindustries.com">cantusteam@cantusindustries.com</a><br>
-      github — <a href="https://github.com/cantus-industries">github.com/cantus-industries</a>
-    </div>
-
-    <div id="desk">
-      <h3>Ask before you email</h3>
-      <p class="hint">Answers come only from our public materials. Anything it can't source, it declines — that's the product working.</p>
-      <div class="chips" role="group" aria-label="Example questions">
-        <button class="chip" data-q="What does the diagnostic include?">What does the diagnostic include?</button>
-        <button class="chip" data-q="How does fail-loud review work?">How does fail-loud review work?</button>
-        <button class="chip" data-q="What's in the public repos?">What's in the public repos?</button>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <span class="logo-text">Cantus Industries</span>
       </div>
-      <div class="ask-row">
-        <input id="askInput" type="text" maxlength="500" placeholder="Ask about our services, method, or code." aria-label="Your question">
-        <button id="askBtn">ask</button>
-      </div>
-      <div id="answer" aria-live="polite">
-        <div class="a-text"></div>
-        <div class="a-src"></div>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#proof">Proof</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="theme-toggle-area">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light and dark theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  <div class="wrap">
-    <p>Cantus Industries — multi-agent systems that audit their own work.</p>
-    <p class="mono">© 2026 Cantus Industries · MIT-licensed frameworks on <a href="https://github.com/cantus-industries">GitHub</a></p>
-  </div>
-</footer>
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <h1>We build multi-agent systems that audit their own work.</h1>
+        <p class="hero-subhead">
+          Cantus Industries designs agentic architectures where the generator and the verifier are never the same agent, standards are measurable instead of aspirational, and an incomplete review can never return an approval.
+        </p>
+        <p class="hero-proof-line">
+          Every claim on this page is verifiable: our frameworks are public, tested, and documented — clone them and run the suites yourself.
+        </p>
+        <div class="hero-ctas">
+          <!-- TODO: Update mailto: request once owner supplies the Cal.com/Calendly booking URL -->
+          <a href="mailto:cantusteam@cantusindustries.com?subject=Intro%20Call%20Request" class="btn btn-primary">Book an intro call &rarr;</a>
+          <a href="#proof" class="link-secondary">See the code &rarr;</a>
+        </div>
+      </div>
+    </section>
 
-<script>
-(function(){
-  var root=document.documentElement;
-  var saved=localStorage.getItem("theme");
-  if(saved){root.setAttribute("data-theme",saved);}
-  document.getElementById("themeToggle").addEventListener("click",function(){
-    var dark=window.matchMedia("(prefers-color-scheme: dark)").matches;
-    var cur=root.getAttribute("data-theme")||(dark?"dark":"light");
-    var next=cur==="dark"?"light":"dark";
-    root.setAttribute("data-theme",next);
-    localStorage.setItem("theme",next);
-  });
+    <!-- 2. Proof -->
+    <section class="section proof-section" id="proof">
+      <div class="section-container">
+        <span class="section-label">01 / PROOF</span>
+        <h2 class="section-title">The code is public</h2>
+        <p class="section-intro">
+          Most consultancies show you slide decks. We show you repositories — three hundred fifteen tests between them, every limitation documented in the README. And these are the examples, not the extent: Cantus Industries builds custom bots, autonomous agents, and end-to-end agentic workflows to order.
+        </p>
+        
+        <div class="repo-grid">
+          <!-- Card 1 -->
+          <article class="repo-card">
+            <header class="repo-card-header">
+              <span class="repo-meta">Example Use Case / Repository</span>
+              <h3 class="repo-name">multi-agent-review-council</h3>
+              <div class="test-badge">156 tests</div>
+            </header>
+            <div class="repo-body">
+              <p>
+                Parallel document review by six specialist agents with a fail-loud consensus ledger. If a reviewer crashes, times out, or never reports, the run is blocked and is never approved on partial evidence. 156 tests. Runs offline, on Claude, or on Gemini behind one protocol.
+              </p>
+            </div>
+            <footer class="repo-footer">
+              <a href="https://github.com/cantus-industries/multi-agent-review-council" class="repo-link" target="_blank" rel="noopener">
+                &rarr; github.com/cantus-industries/multi-agent-review-council
+              </a>
+            </footer>
+          </article>
 
-  var input=document.getElementById("askInput");
-  var btn=document.getElementById("askBtn");
-  var box=document.getElementById("answer");
-  var aText=box.querySelector(".a-text");
-  var aSrc=box.querySelector(".a-src");
-  var OFFLINE="The desk agent is offline — email us instead: cantusteam@cantusindustries.com";
+          <!-- Card 2 -->
+          <article class="repo-card">
+            <header class="repo-card-header">
+              <span class="repo-meta">Example Use Case / Repository</span>
+              <h3 class="repo-name">scheduled-deployment-pipeline</h3>
+              <div class="test-badge">159 tests</div>
+            </header>
+            <div class="repo-body">
+              <p>
+                A scheduled pipeline from parallel ingestion agents to a gated, reversible production deploy. Refuses to publish on partial data; every write is atomic, backed up, and verified after landing. 159 tests.
+              </p>
+            </div>
+            <footer class="repo-footer">
+              <a href="https://github.com/cantus-industries/scheduled-deployment-pipeline" class="repo-link" target="_blank" rel="noopener">
+                &rarr; github.com/cantus-industries/scheduled-deployment-pipeline
+              </a>
+            </footer>
+          </article>
 
-  document.querySelectorAll(".chip").forEach(function(c){
-    c.addEventListener("click",function(){input.value=c.getAttribute("data-q");input.focus();});
-  });
+          <!-- Card 3 -->
+          <article class="repo-card">
+            <header class="repo-card-header">
+              <span class="repo-meta">Case Study / Repository</span>
+              <h3 class="repo-name">agentic-writers-room</h3>
+            </header>
+            <div class="repo-body">
+              <p>
+                A case study: one operator directing ten-plus agents across four layers and two LLM platforms, with persistent state and a human gate on every decision. The architecture the two frameworks above were extracted from.
+              </p>
+            </div>
+            <footer class="repo-footer">
+              <a href="https://github.com/cantus-industries/agentic-writers-room" class="repo-link" target="_blank" rel="noopener">
+                &rarr; github.com/cantus-industries/agentic-writers-room
+              </a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  function show(text,src){
-    box.style.display="block";
-    aText.textContent=text;
-    aSrc.textContent=src||"";
-  }
+    <!-- 3. Services -->
+    <section class="section services-section" id="services">
+      <div class="section-container">
+        <span class="section-label">02 / SERVICES</span>
+        <h2 class="section-title">Three ways to engage</h2>
+        <p class="section-intro">
+          Every engagement is fixed-scope and milestone-gated. We do not bill hourly.
+        </p>
 
-  function ask(){
-    var q=(input.value||"").trim();
-    if(!q){return;}
-    btn.disabled=true;
-    show("…","");
-    fetch("/api/ask",{
-      method:"POST",
-      headers:{"content-type":"application/json"},
-      body:JSON.stringify({question:q})
-    }).then(function(r){
-      if(!r.ok){throw new Error("http "+r.status);}
-      return r.json();
-    }).then(function(d){
-      if(d&&d.answer){
-        show(d.answer,"Answered from the public corpus · "+(d.source||"site materials")+". For anything else: cantusteam@cantusindustries.com");
-      }else{show(OFFLINE,"");}
-    }).catch(function(){show(OFFLINE,"");})
-    .finally(function(){btn.disabled=false;});
-  }
-  btn.addEventListener("click",ask);
-  input.addEventListener("keydown",function(e){if(e.key==="Enter"){ask();}});
-})();
-</script>
+        <div class="services-list">
+          <!-- Offer 1 (Lead position, price included) -->
+          <article class="service-item lead-service">
+            <div class="service-header">
+              <h3 class="service-name">Agentic Readiness Diagnostic</h3>
+              <div class="service-meta">
+                <span class="service-price">$2,500–$5,000</span>
+                <span class="service-duration">Two weeks</span>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                We take one workflow you believe could be automated — a review process, a reporting pipeline, a repetitive decision — and put it through the same analysis our own systems use. You receive a written findings report: where agents genuinely fit, where they don't, what the architecture would look like, and what it would cost to build. Findings come with severity ratings and evidence, the same format our review council produces. If the answer is "don't build this," the report says so.
+              </p>
+              <p>
+                The exact figure sits inside the range by the scope of the workflow, is fixed in writing before we start, and never moves mid-engagement.
+              </p>
+            </div>
+            <div class="service-footer">
+              <a href="mailto:cantusteam@cantusindustries.com?subject=Agentic%20Readiness%20Diagnostic%20Request" class="btn btn-diagnostic">Book the diagnostic &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Offer 2 -->
+          <article class="service-item">
+            <div class="service-header">
+              <h3 class="service-name">Consensus Review Deployment</h3>
+              <div class="service-meta">
+                <span class="service-scope">Scoped after diagnostic</span>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                A multi-agent review panel adapted to your documents and your standards — contracts, policies, releases, content — with viewpoints you define, a fail-loud ledger, and verdicts your team can gate real decisions on. Built on our public council framework.
+              </p>
+            </div>
+          </article>
+
+          <!-- Offer 3 -->
+          <article class="service-item">
+            <div class="service-header">
+              <h3 class="service-name">Autonomous Pipeline Deployment</h3>
+              <div class="service-meta">
+                <span class="service-scope">Scoped after diagnostic</span>
+              </div>
+            </div>
+            <div class="service-body">
+              <p>
+                Scheduled, hands-off data-to-production automation with validation at every boundary, atomic deploys, backups, and rollback. Built on our public pipeline framework. Setup plus an optional maintenance retainer.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Method -->
+    <section class="section method-section" id="method">
+      <div class="section-container">
+        <span class="section-label">03 / METHOD</span>
+        <h2 class="section-title">How we build</h2>
+        <p class="section-intro">
+          Five principles, all visible in the public code.
+        </p>
+
+        <ol class="principles-list">
+          <li class="principle-item">
+            <div class="principle-num">01</div>
+            <div class="principle-content">
+              <h3>Durable state beats clever prompting.</h3>
+              <p>Hard problems get solved with versioned files on disk — ledgers, timelines, knowledge bases — not longer prompts. No agent depends on its memory of a prior session.</p>
+            </div>
+          </li>
+          <li class="principle-item">
+            <div class="principle-num">02</div>
+            <div class="principle-content">
+              <h3>The generator never verifies its own work.</h3>
+              <p>Producer and reviewer are separate agents, ideally on separate platforms with separate failure modes.</p>
+            </div>
+          </li>
+          <li class="principle-item">
+            <div class="principle-num">03</div>
+            <div class="principle-content">
+              <h3>Standards must be measurable to be enforceable.</h3>
+              <p>Numeric caps and countable rules, not adjectives. "Use sparingly" is not a standard; "no more than two per document, counted mechanically" is.</p>
+            </div>
+          </li>
+          <li class="principle-item">
+            <div class="principle-num">04</div>
+            <div class="principle-content">
+              <h3>Fail loud.</h3>
+              <p>A system that cannot complete its checks blocks; it never returns a confident default. Incomplete evidence is a verdict, and that verdict is no.</p>
+            </div>
+          </li>
+          <li class="principle-item">
+            <div class="principle-num">05</div>
+            <div class="principle-content">
+              <h3>The human gate is a feature.</h3>
+              <p>Throughput comes from the agents; judgment does not. A named person owns every decision that ships.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. About -->
+    <section class="section about-section" id="about">
+      <div class="section-container">
+        <span class="section-label">04 / ABOUT</span>
+        <h2 class="section-title">Nicholas Chapman, founder.</h2>
+        <div class="about-content">
+          <p>
+            I came to agentic AI through an organizational mandate to raise AI fluency at scale, where the measure of success was tempo — how much faster a team can move without lowering its standard for verification. That environment made two things obvious early: speed without a check is a liability, and a check that slows everything down defeats the purpose. Everything Cantus Industries builds is aimed at having both.
+          </p>
+          <p>
+            The portfolio is built on commercially available frontier models, on my own time, on personal projects. The code is public and tested. Read it before you call me.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Contact -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <span class="section-label">05 / CONTACT</span>
+        <h2 class="section-title">Start with the code, then talk to us.</h2>
+        
+        <div class="contact-details">
+          <div class="contact-grid">
+            <div class="contact-card">
+              <span class="contact-label">Email</span>
+              <a href="mailto:cantusteam@cantusindustries.com" class="contact-val">cantusteam@cantusindustries.com</a>
+            </div>
+            
+            <div class="contact-card">
+              <span class="contact-label">Booking</span>
+              <!-- Marked slot for Cal.com booking link -->
+              <span class="contact-val placeholder-link" title="Booking link will be added here upon owner supply">
+                Booking via email / Link coming soon
+              </span>
+            </div>
+
+            <div class="contact-card">
+              <span class="contact-label">GitHub</span>
+              <a href="https://github.com/cantus-industries" target="_blank" rel="noopener" class="contact-val">github.com/cantus-industries</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="desk" class="desk-panel">
+          <h3 class="desk-title">Ask before you email</h3>
+          <p class="desk-hint">Answers come only from our public materials. Anything it can't source, it declines — that's the product working.</p>
+          <div class="desk-chips" role="group" aria-label="Example questions">
+            <button class="desk-chip" data-q="What does the diagnostic include?">What does the diagnostic include?</button>
+            <button class="desk-chip" data-q="How does fail-loud review work?">How does fail-loud review work?</button>
+            <button class="desk-chip" data-q="What's in the public repos?">What's in the public repos?</button>
+          </div>
+          <div class="desk-row">
+            <input id="askInput" type="text" maxlength="500" placeholder="Ask about our services, method, or code." aria-label="Your question">
+            <button id="askBtn" class="btn btn-primary">Ask</button>
+          </div>
+          <div id="answer" class="desk-answer" aria-live="polite">
+            <div class="a-text"></div>
+            <div class="a-src"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-tagline">Cantus Industries: multi-agent systems that audit their own work.</p>
+      <p class="footer-copyright">
+        &copy; 2026 Cantus Industries &middot; MIT-licensed frameworks on GitHub
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
