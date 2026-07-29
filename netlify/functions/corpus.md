@@ -11,8 +11,6 @@ Method - five principles: durable state beats clever prompting; the generator ne
 
 What you can use Cantus Industries for (example use cases): document review that blocks instead of rubber-stamps (contracts, policies, releases, content); scheduled pipelines that refuse to publish on partial data; repetitive decisions executed by agents with an audit trail traceable to evidence and a named standard; custom bots grounded only in materials the client controls, which decline everything else (the desk agent on this site is one). These are examples, not the extent - Cantus Industries builds custom bots, autonomous agents, and end-to-end agentic workflows to order.
 
-About the founder: Nicholas Chapman came to agentic AI through an organizational mandate to raise AI fluency at scale, where the measure of success was tempo. The portfolio is built on commercially available frontier models on personal projects. The code is public and tested.
-
 # SECTION: multi-agent-review-council README
 
 # Autonomous Critic Council
@@ -157,11 +155,11 @@ It is built to run as **two independent scheduled processes on different days**,
 
 ```
   day 25                                day 1
-  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”          â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-  â”‚ collect → translate      â”‚  state   â”‚ deploy           â”‚
-  â”‚ ingest_agents.py         â”‚ â”€â”€â”€â”€â”€â”€â”€â–¶ â”‚ deploy.py        â”‚
-  â”‚ code_translator.py       â”‚  (json)  â”‚ + verify + backupâ”‚
-  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜          â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+  ┌──────────────────────────┐          ┌──────────────────┐
+  │ collect → translate      │  state   │ deploy           │
+  │ ingest_agents.py         │ ───────▶ │ deploy.py        │
+  │ code_translator.py       │  (json)  │ + verify + backup│
+  └──────────────────────────┘          └──────────────────┘
 ```
 
 ## What it actually does
@@ -171,11 +169,11 @@ Percentage shifts and compliance signals are **parsed out of the event text**. N
 ```
 "Market Event: Infrastructure cost vector shifted by +12%."
 "Market Event: Compliance standard ISO-2026 enforced globally."
-        â”‚
-        â–¼
+        │
+        ▼
   modifier = 1.12,  compliance_enforced = true
-        â”‚
-        â–¼
+        │
+        ▼
   PLT-CORE-01  base 1200.00  →  adjusted 1344.00  compliance_required: true
 ```
 
@@ -294,7 +292,7 @@ released with full test suites:
 ```mermaid
 flowchart TD
     subgraph L1["LAYER 1 — Persistent State (the Story Bible)"]
-        BIBLE["8 bible files<br/>premise Â· 3 act outlines Â· characters<br/>continuity ledger Â· timeline Â· style guide"]
+        BIBLE["8 bible files<br/>premise · 3 act outlines · characters<br/>continuity ledger · timeline · style guide"]
         MEM["Cross-session memory<br/>indexed, survives restarts"]
     end
 
@@ -314,7 +312,7 @@ flowchart TD
         P4["Persona 4<br/>world-building & atmosphere"]
         P5["Persona 5<br/>pacing & tension"]
         P6["Persona 6<br/>reader engagement"]
-        RUBRIC["Weighted rubric<br/>6 dimensions x per-persona weights"]
+        RUBRIC["Weighted rubric<br/>6 dimensions × per-persona weights"]
     end
 
     subgraph L4["LAYER 4 — The Writing Lab (real time)"]
@@ -449,4 +447,3 @@ systems that audit their own work.
 # SECTION: FAQ (grows from real visitor questions)
 
 (none yet)
-
